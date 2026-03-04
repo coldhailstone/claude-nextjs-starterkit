@@ -1,5 +1,4 @@
 import { Button } from '@/components/ui/button'
-import { ThemeToggle } from '@/components/theme-toggle'
 import { Layers, Palette, Shield, Zap, Code2, ArrowRight } from 'lucide-react'
 
 const techStack = [
@@ -32,10 +31,7 @@ const techStack = [
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background">
-      <div className="flex justify-end p-4">
-        <ThemeToggle />
-      </div>
+    <div className="bg-background">
       {/* Hero */}
       <section className="flex flex-col items-center justify-center px-4 py-24 text-center">
         <div className="mb-4 inline-flex items-center rounded-full border px-3 py-1 text-sm text-muted-foreground">
@@ -97,6 +93,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   )
 }
