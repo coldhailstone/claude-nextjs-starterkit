@@ -1,4 +1,7 @@
 import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
+import { Card, CardContent } from '@/components/ui/card'
+import { FeatureCard } from '@/components/feature-card'
 import { Layers, Palette, Shield, Zap, Code2, ArrowRight } from 'lucide-react'
 
 const techStack = [
@@ -34,9 +37,9 @@ export default function Home() {
     <div className="bg-background">
       {/* Hero */}
       <section className="flex flex-col items-center justify-center px-4 py-24 text-center">
-        <div className="mb-4 inline-flex items-center rounded-full border px-3 py-1 text-sm text-muted-foreground">
+        <Badge variant="outline" className="mb-4">
           Next.js Starter Kit
-        </div>
+        </Badge>
         <h1 className="mb-4 text-4xl font-bold tracking-tight sm:text-6xl">
           빠른 시작을 위한
           <br />
@@ -49,7 +52,7 @@ export default function Home() {
         <div className="flex flex-wrap justify-center gap-3">
           <Button size="lg">
             시작하기
-            <ArrowRight className="ml-2 h-4 w-4" />
+            <ArrowRight />
           </Button>
           <Button size="lg" variant="outline">
             문서 보기
@@ -65,17 +68,8 @@ export default function Home() {
             프로덕션 준비가 된 최신 기술로 구성됩니다
           </p>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {techStack.map(({ icon: Icon, name, description }) => (
-              <div
-                key={name}
-                className="rounded-lg border bg-card p-5 text-card-foreground shadow-sm transition-shadow hover:shadow-md"
-              >
-                <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-md bg-primary/10">
-                  <Icon className="h-5 w-5 text-primary" />
-                </div>
-                <h3 className="mb-1 font-semibold">{name}</h3>
-                <p className="text-sm text-muted-foreground">{description}</p>
-              </div>
+            {techStack.map((tech) => (
+              <FeatureCard key={tech.name} {...tech} />
             ))}
           </div>
         </div>
@@ -83,15 +77,17 @@ export default function Home() {
 
       {/* CTA */}
       <section className="px-4 py-16 text-center">
-        <div className="mx-auto max-w-xl rounded-xl border bg-card p-8">
-          <h2 className="mb-2 text-xl font-semibold">바로 시작하세요</h2>
-          <p className="mb-6 text-muted-foreground">
-            이 스타터 킷을 기반으로 빠르게 개발을 시작할 수 있습니다
-          </p>
-          <div className="rounded-md bg-muted px-4 py-3 font-mono text-sm">
-            git clone &lt;repo-url&gt; &amp;&amp; npm install
-          </div>
-        </div>
+        <Card className="mx-auto max-w-xl p-8">
+          <CardContent className="p-0">
+            <h2 className="mb-2 text-xl font-semibold">바로 시작하세요</h2>
+            <p className="mb-6 text-muted-foreground">
+              이 스타터 킷을 기반으로 빠르게 개발을 시작할 수 있습니다
+            </p>
+            <div className="rounded-md bg-muted px-4 py-3 font-mono text-sm">
+              git clone &lt;repo-url&gt; &amp;&amp; npm install
+            </div>
+          </CardContent>
+        </Card>
       </section>
     </div>
   )
